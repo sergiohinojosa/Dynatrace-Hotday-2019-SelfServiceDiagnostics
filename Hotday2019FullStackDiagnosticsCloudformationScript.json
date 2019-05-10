@@ -176,6 +176,8 @@
                             "java -jar dynatrace-easytravel-linux-x86_64.jar -y\n",
                             "cd /opt/easytravel-2.0.0-x64/resources\n",
                             "sed -i 's/apmServerDefault=Classic/apmServerDefault=APM/' easyTravelConfig.properties\n",
+							"sed -i 's/config.frontendJavaopts=-Xmx160m/config.frontendJavaopts=-Xmx320m/' easyTravelConfig.properties\n",
+							"sed -i 's/config.backendJavaopts=-Xmx64m/config.backendJavaopts=-Xmx320m/' easyTravelConfig.properties\n",
                             "cd /opt/easytravel-2.0.0-x64/weblauncher\n",
                             "./weblauncher.sh UEM Standard\n"
                         ]]
