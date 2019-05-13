@@ -1,0 +1,1140 @@
+{
+	"info": {
+		"_postman_id": "da8682b5-b4a0-407d-ac3f-ae2a8be475e1",
+		"name": "Dynatrace Hotday 2019",
+		"description": "Config API for Hotday 2019",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Application Settings",
+			"item": [
+				{
+					"name": "Update Default Application Configuration",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7e04d3c3-04a3-4304-8feb-d9daf27aabe0",
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Api-Token {{Api-Token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"EasyTravel\",\r\n  \"realUserMonitoringEnabled\": true,\r\n  \"costControlUserSessionPercentage\": 100,\r\n  \"loadActionKeyPerformanceMetric\": \"VISUALLY_COMPLETE\",\r\n  \"xhrActionKeyPerformanceMetric\": \"ACTION_DURATION\",\r\n  \"loadActionApdexSettings\": {\r\n    \"threshold\": 3,\r\n    \"considerJavaScriptErrors\": true\r\n  },\r\n  \"xhrActionApdexSettings\": {\r\n    \"threshold\": 2.5,\r\n    \"considerJavaScriptErrors\": false\r\n  },\r\n  \"customActionApdexSettings\": {\r\n    \"threshold\": 3,\r\n    \"considerJavaScriptErrors\": true\r\n  },\r\n  \"waterfallSettings\": {\r\n    \"uncompressedResourcesThreshold\": 860,\r\n    \"resourcesThreshold\": 100000,\r\n    \"resourceBrowserCachingThreshold\": 50,\r\n    \"slowFirstPartyResourcesThreshold\": 200000,\r\n    \"slowThirdPartyResourcesThreshold\": 200000,\r\n    \"slowCdnResourcesThreshold\": 200000,\r\n    \"speedIndexVisuallyCompleteRatioThreshold\": 80\r\n  },\r\n  \"monitoringSettings\": {\r\n    \"fetchRequests\": true,\r\n    \"xmlHttpRequest\": true,\r\n    \"javaScriptFrameworkSupport\": {\r\n      \"angular\": false,\r\n      \"dojo\": false,\r\n      \"extJS\": false,\r\n      \"icefaces\": true,\r\n      \"jQuery\": true,\r\n      \"mooTools\": false,\r\n      \"prototype\": true,\r\n      \"activeXObject\": false\r\n    },\r\n    \"contentCapture\": {\r\n      \"resourceTimingSettings\": {\r\n        \"w3cResourceTimings\": true,\r\n        \"nonW3cResourceTimings\": false,\r\n        \"nonW3cResourceTimingsInstrumentationDelay\": 50,\r\n        \"resourceTimingCaptureType\": \"CAPTURE_FULL_DETAILS\",\r\n        \"resourceTimingsDomainLimit\": 10\r\n      },\r\n      \"javaScriptErrors\": true,\r\n      \"timeoutSettings\": {\r\n        \"timedActionSupport\": false,\r\n        \"temporaryActionLimit\": 0,\r\n        \"temporaryActionTotalTimeout\": 100\r\n      },\r\n      \"visuallyCompleteAndSpeedIndex\": true\r\n    },\r\n    \"excludeXhrRegex\": \"\",\r\n    \"injectionMode\": \"JAVASCRIPT_TAG\",\r\n    \"libraryFileLocation\": \"\",\r\n    \"monitoringDataPath\": \"\",\r\n    \"customConfigurationProperties\": \"\",\r\n    \"serverRequestPathId\": \"\",\r\n    \"secureCookieAttribute\": false,\r\n    \"cookiePlacementDomain\": \"\",\r\n    \"cacheControlHeaderOptimizations\": true,\r\n    \"advancedJavaScriptTagSettings\": {\r\n      \"syncBeaconFirefox\": false,\r\n      \"syncBeaconInternetExplorer\": false,\r\n      \"instrumentUnsupportedAjaxFrameworks\": false,\r\n      \"specialCharactersToEscape\": \"\",\r\n      \"maxActionNameLength\": 100,\r\n      \"maxErrorsToCapture\": 10,\r\n      \"additionalEventHandlers\": {\r\n        \"userMouseupEventForClicks\": false,\r\n        \"clickEventHandler\": false,\r\n        \"mouseupEventHandler\": false,\r\n        \"blurEventHandler\": false,\r\n        \"changeEventHandler\": false,\r\n        \"toStringMethod\": false,\r\n        \"maxDomNodesToInstrument\": 5000\r\n      },\r\n      \"eventWrapperSettings\": {\r\n        \"click\": false,\r\n        \"mouseUp\": false,\r\n        \"change\": false,\r\n        \"blur\": false,\r\n        \"touchStart\": false,\r\n        \"touchEnd\": false\r\n      },\r\n      \"globalEventCaptureSettings\": {\r\n        \"mouseUp\": true,\r\n        \"mouseDown\": true,\r\n        \"click\": true,\r\n        \"doubleClick\": true,\r\n        \"keyUp\": true,\r\n        \"keyDown\": true,\r\n        \"scroll\": true,\r\n        \"additionalEventCapturedAsUserInput\": \"\"\r\n      }\r\n    }\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "{{EnvUrl}}{{ConfigAPI}}/applications/web/default",
+							"host": [
+								"{{EnvUrl}}{{ConfigAPI}}"
+							],
+							"path": [
+								"applications",
+								"web",
+								"default"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Default Application ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "04574a7b-fba3-4762-afc9-a6126a3a5057",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"var i;",
+									"for (i=0; i < jsonData.length; i++){",
+									"    if (jsonData[i].applicationType === \"DEFAULT\"){",
+									"        pm.environment.set(\"AppID\", jsonData[i].entityId)",
+									"        console.log(jsonData[i].entityId)",
+									"    }",
+									"}",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Api-Token {{Api-Token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{EnvUrl}}{{EnvAPI}}/entity/applications",
+							"host": [
+								"{{EnvUrl}}{{EnvAPI}}"
+							],
+							"path": [
+								"entity",
+								"applications"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Custom Service Creation",
+			"item": [
+				{
+					"name": "Check Destination - Custom Service Creation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1a4a0c2c-c185-451b-9245-ae4dccdb6379",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Api-Token {{Api-Token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"CheckDestination\",\r\n  \"enabled\": true,\r\n  \"rules\": [\r\n    {\r\n      \"enabled\": true,\r\n      \"className\": \"com.dynatrace.easytravel.business.webservice.JourneyService\",\r\n      \"methodRules\": [\r\n        {\r\n          \"methodName\": \"checkDestination\",\r\n          \"argumentTypes\": [],\r\n          \"returnType\": \"void\"\r\n        },\r\n        {\r\n          \"methodName\": \"checkDestination\",\r\n          \"argumentTypes\": [\r\n            \"java.lang.String\"\r\n          ],\r\n          \"returnType\": \"boolean\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"queueEntryPoint\": false\r\n}"
+						},
+						"url": {
+							"raw": "{{EnvUrl}}{{ConfigAPI}}/customServices/java",
+							"host": [
+								"{{EnvUrl}}{{ConfigAPI}}"
+							],
+							"path": [
+								"customServices",
+								"java"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Credit Card Validation - Custom Service Creation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "858f756b-89c7-4a9c-8bee-ba40085e2b88",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Api-Token {{Api-Token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Credit Card Validation\",\r\n  \"enabled\": true,\r\n  \"rules\": [\r\n    {\r\n      \"enabled\": true,\r\n      \"className\": \"com.dynatrace.easytravel.ipc.SocketNativeApplication\",\r\n      \"methodRules\": [\r\n        {\r\n          \"methodName\": \"sendAndReceive\",\r\n          \"argumentTypes\": [],\r\n          \"returnType\": \"void\"\r\n        },\r\n        {\r\n          \"methodName\": \"sendAndReceive\",\r\n          \"argumentTypes\": [\r\n            \"java.lang.String\"\r\n          ],\r\n          \"returnType\": \"java.lang.String\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"queueEntryPoint\": false\r\n}"
+						},
+						"url": {
+							"raw": "{{EnvUrl}}{{ConfigAPI}}/customServices/java",
+							"host": [
+								"{{EnvUrl}}{{ConfigAPI}}"
+							],
+							"path": [
+								"customServices",
+								"java"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auto Tagging Rules",
+			"item": [
+				{
+					"name": "Easytravel App Tagging Rule",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "93c75e63-b4e4-4315-ba0d-f81a3399afdd",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"EasyTravel\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Api-Token {{Api-Token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"EasyTravel\",\r\n  \"rules\": [\r\n    {\r\n      \"type\": \"PROCESS_GROUP\",\r\n      \"enabled\": true,\r\n      \"valueFormat\": \"\",\r\n      \"propagationTypes\": [\r\n        \"PROCESS_GROUP_TO_HOST\",\r\n        \"PROCESS_GROUP_TO_SERVICE\"\r\n      ],\r\n      \"conditions\": [\r\n        {\r\n          \"key\": {\r\n            \"attribute\": \"PROCESS_GROUP_DETECTED_NAME\"\r\n          },\r\n          \"comparisonInfo\": {\r\n            \"type\": \"STRING\",\r\n            \"operator\": \"CONTAINS\",\r\n            \"value\": \"easytravel\",\r\n            \"negate\": false,\r\n            \"caseSensitive\": false\r\n          }\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}"
+						},
+						"url": {
+							"raw": "{{EnvUrl}}{{ConfigAPI}}/autoTags",
+							"host": [
+								"{{EnvUrl}}{{ConfigAPI}}"
+							],
+							"path": [
+								"autoTags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tag EasyTravel Application",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e782a3dc-c011-4faa-a98c-4e06ea63fcef",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201,202,204]);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Api-Token {{Api-Token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"tags\": [\n\t\"EasyTravel\"\t\n\t]\n}"
+						},
+						"url": {
+							"raw": "{{EnvUrl}}{{EnvAPI}}/entity/applications/{{AppID}}",
+							"host": [
+								"{{EnvUrl}}{{EnvAPI}}"
+							],
+							"path": [
+								"entity",
+								"applications",
+								"{{AppID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AppTeam Tagging Rule",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3cb608ac-d397-4316-a49a-921e23dcc82c",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"AppTeam\");",
+									"});",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Api-Token {{Api-Token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"name\": \"AppTeam\",\r\n  \"rules\": [\r\n    {\r\n      \"type\": \"SERVICE\",\r\n      \"enabled\": true,\r\n      \"valueFormat\": \"{ProcessGroup:JavaJarFile/com.dynatrace.easytravel.([^.]++)} {ProcessGroup:JavaJarFile/com.dynatrace.easytravel.[^.]++.([^.]++).jar}\",\r\n      \"propagationTypes\": [\r\n        \"SERVICE_TO_PROCESS_GROUP_LIKE\"\r\n      ],\r\n      \"conditions\": [\r\n        {\r\n          \"key\": {\r\n            \"attribute\": \"SERVICE_TECHNOLOGY\"\r\n          },\r\n          \"comparisonInfo\": {\r\n            \"type\": \"SIMPLE_TECH\",\r\n            \"operator\": \"EQUALS\",\r\n            \"value\": {\r\n              \"type\": \"JAVA\"\r\n            },\r\n            \"negate\": false\r\n          }\r\n        },\r\n        {\r\n          \"key\": {\r\n            \"attribute\": \"PROCESS_GROUP_TAGS\"\r\n          },\r\n          \"comparisonInfo\": {\r\n            \"type\": \"TAG\",\r\n            \"operator\": \"TAG_KEY_EQUALS\",\r\n            \"value\": {\r\n              \"context\": \"CONTEXTLESS\",\r\n              \"key\": \"EasyTravel\"\r\n            },\r\n            \"negate\": false\r\n          }\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}"
+						},
+						"url": {
+							"raw": "{{EnvUrl}}{{ConfigAPI}}/autoTags",
+							"host": [
+								"{{EnvUrl}}{{ConfigAPI}}"
+							],
+							"path": [
+								"autoTags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Web Server Tagging Rule",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a9f96d43-9710-46d7-b182-8064663d1c1e",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Web Server\");",
+									"});",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Api-Token {{Api-Token}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"name\": \"Web Server\",\r\n  \"rules\": [\r\n    {\r\n      \"type\": \"SERVICE\",\r\n      \"enabled\": true,\r\n      \"valueFormat\": null,\r\n      \"propagationTypes\": [\r\n        \"SERVICE_TO_PROCESS_GROUP_LIKE\"\r\n      ],\r\n      \"conditions\": [\r\n        {\r\n          \"key\": {\r\n            \"attribute\": \"SERVICE_TECHNOLOGY\"\r\n          },\r\n          \"comparisonInfo\": {\r\n            \"type\": \"SIMPLE_TECH\",\r\n            \"operator\": \"EQUALS\",\r\n            \"value\": {\r\n              \"type\": \"APACHE_HTTP_SERVER\"\r\n            },\r\n            \"negate\": false\r\n          }\r\n        },\r\n        {\r\n          \"key\": {\r\n            \"attribute\": \"PROCESS_GROUP_TAGS\"\r\n          },\r\n          \"comparisonInfo\": {\r\n            \"type\": \"TAG\",\r\n            \"operator\": \"TAG_KEY_EQUALS\",\r\n            \"value\": {\r\n              \"context\": \"CONTEXTLESS\",\r\n              \"key\": \"EasyTravel\"\r\n            },\r\n            \"negate\": false\r\n          }\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}"
+						},
+						"url": {
+							"raw": "{{EnvUrl}}{{ConfigAPI}}/autoTags",
+							"host": [
+								"{{EnvUrl}}{{ConfigAPI}}"
+							],
+							"path": [
+								"autoTags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Credit Card Auth Tagging Rule",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2696d4b8-bca5-4465-955c-882fa25da7cd",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Credit Card Auth\");",
+									"});",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Api-Token {{Api-Token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Credit Card Auth\",\n  \"rules\": [\n    {\n      \"type\": \"SERVICE\",\n      \"enabled\": true,\n      \"valueFormat\": null,\n      \"propagationTypes\": [\n        \"SERVICE_TO_PROCESS_GROUP_LIKE\"\n      ],\n      \"conditions\": [\n        {\n          \"key\": {\n            \"attribute\": \"PROCESS_GROUP_TAGS\"\n          },\n          \"comparisonInfo\": {\n            \"type\": \"TAG\",\n            \"operator\": \"TAG_KEY_EQUALS\",\n            \"value\": {\n              \"context\": \"CONTEXTLESS\",\n              \"key\": \"EasyTravel\"\n            },\n            \"negate\": false\n          }\n        },\n        {\n          \"key\": {\n            \"attribute\": \"PROCESS_GROUP_PREDEFINED_METADATA\",\n            \"dynamicKey\": \"EXE_NAME\",\n            \"type\": \"PROCESS_PREDEFINED_METADATA_KEY\"\n          },\n          \"comparisonInfo\": {\n            \"type\": \"STRING\",\n            \"operator\": \"CONTAINS\",\n            \"value\": \"CreditCardAuthorization\",\n            \"negate\": false,\n            \"caseSensitive\": true\n          }\n        }\n      ]\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{EnvUrl}}{{ConfigAPI}}/autoTags",
+							"host": [
+								"{{EnvUrl}}{{ConfigAPI}}"
+							],
+							"path": [
+								"autoTags"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Management Zones",
+			"item": [
+				{
+					"name": "EasyTravel Management Zone",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d43e369f-2a5e-4ef7-8964-4b0238747072",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"EasyTravel\");",
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Api-Token {{Api-Token}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"EasyTravel\",\n  \"rules\": [\n    {\n      \"type\": \"SERVICE\",\n      \"enabled\": true,\n      \"propagationTypes\": [\n        \"SERVICE_TO_PROCESS_GROUP_LIKE\",\n        \"SERVICE_TO_HOST_LIKE\"\n      ],\n      \"conditions\": [\n        {\n          \"key\": {\n            \"attribute\": \"SERVICE_TAGS\"\n          },\n          \"comparisonInfo\": {\n            \"type\": \"TAG\",\n            \"operator\": \"TAG_KEY_EQUALS\",\n            \"value\": {\n              \"context\": \"CONTEXTLESS\",\n              \"key\": \"EasyTravel\"\n            },\n            \"negate\": false\n          }\n        }\n      ]\n    },\n    {\n      \"type\": \"WEB_APPLICATION\",\n      \"enabled\": true,\n      \"propagationTypes\": [],\n      \"conditions\": [\n        {\n          \"key\": {\n            \"attribute\": \"WEB_APPLICATION_TAGS\"\n          },\n          \"comparisonInfo\": {\n            \"type\": \"TAG\",\n            \"operator\": \"TAG_KEY_EQUALS\",\n            \"value\": {\n              \"context\": \"CONTEXTLESS\",\n              \"key\": \"EasyTravel\"\n            },\n            \"negate\": false\n          }\n        }\n      ]\n    },\n    {\n      \"type\": \"BROWSER_MONITOR\",\n      \"enabled\": true,\n      \"propagationTypes\": [],\n      \"conditions\": [\n        {\n          \"key\": {\n            \"attribute\": \"BROWSER_MONITOR_TAGS\"\n          },\n          \"comparisonInfo\": {\n            \"type\": \"TAG\",\n            \"operator\": \"TAG_KEY_EQUALS\",\n            \"value\": {\n              \"context\": \"CONTEXTLESS\",\n              \"key\": \"EasyTravel\"\n            },\n            \"negate\": false\n          }\n        }\n      ]\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{EnvUrl}}{{ConfigAPI}}/managementZones",
+							"host": [
+								"{{EnvUrl}}{{ConfigAPI}}"
+							],
+							"path": [
+								"managementZones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EasyTravel Frontend Management Zone",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f0b8c68a-08a2-43f0-807e-8bf1ec6dfc81",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Frontend\");",
+									"});",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Api-Token {{Api-Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"EasyTravel Frontend\",\n  \"rules\": [\n    {\n      \"type\": \"SERVICE\",\n      \"enabled\": true,\n      \"propagationTypes\": [\n        \"SERVICE_TO_PROCESS_GROUP_LIKE\"\n      ],\n      \"conditions\": [\n        {\n          \"key\": {\n            \"attribute\": \"SERVICE_TAGS\"\n          },\n          \"comparisonInfo\": {\n            \"type\": \"TAG\",\n            \"operator\": \"EQUALS\",\n            \"value\": {\n              \"context\": \"CONTEXTLESS\",\n              \"key\": \"AppTeam\",\n              \"value\": \"customer frontend\"\n            },\n            \"negate\": false\n          }\n        }\n      ]\n    }\n  ]\n}\n"
+						},
+						"url": {
+							"raw": "{{EnvUrl}}{{ConfigAPI}}/managementZones",
+							"host": [
+								"{{EnvUrl}}{{ConfigAPI}}"
+							],
+							"path": [
+								"managementZones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EasyTravel Backend Management Zone",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1b855b72-a84c-4523-8ee0-c3015cc09aa9",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Backend\");",
+									"});",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Api-Token {{Api-Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"EasyTravel Backend\",\n  \"rules\": [\n    {\n      \"type\": \"SERVICE\",\n      \"enabled\": true,\n      \"propagationTypes\": [\n        \"SERVICE_TO_PROCESS_GROUP_LIKE\"\n      ],\n      \"conditions\": [\n        {\n          \"key\": {\n            \"attribute\": \"SERVICE_TAGS\"\n          },\n          \"comparisonInfo\": {\n            \"type\": \"TAG\",\n            \"operator\": \"EQUALS\",\n            \"value\": {\n              \"context\": \"CONTEXTLESS\",\n              \"key\": \"AppTeam\",\n              \"value\": \"business backend\"\n            },\n            \"negate\": false\n          }\n        }\n      ]\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{EnvUrl}}{{ConfigAPI}}/managementZones",
+							"host": [
+								"{{EnvUrl}}{{ConfigAPI}}"
+							],
+							"path": [
+								"managementZones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EasyTravel Credit Card Auth Management Zone",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1b855b72-a84c-4523-8ee0-c3015cc09aa9",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Credit\");",
+									"});",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Api-Token {{Api-Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Credit Card Auth\",\n  \"rules\": [\n    {\n      \"type\": \"SERVICE\",\n      \"enabled\": true,\n      \"propagationTypes\": [\n        \"SERVICE_TO_PROCESS_GROUP_LIKE\"\n      ],\n      \"conditions\": [\n        {\n          \"key\": {\n            \"attribute\": \"SERVICE_TAGS\"\n          },\n          \"comparisonInfo\": {\n            \"type\": \"TAG\",\n            \"operator\": \"TAG_KEY_EQUALS\",\n            \"value\": {\n              \"context\": \"CONTEXTLESS\",\n              \"key\": \"Credit Card Auth\"\n            },\n            \"negate\": false\n          }\n        }\n      ]\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{EnvUrl}}{{ConfigAPI}}/managementZones",
+							"host": [
+								"{{EnvUrl}}{{ConfigAPI}}"
+							],
+							"path": [
+								"managementZones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EasyTravel Infrastructure Management Zone",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1b855b72-a84c-4523-8ee0-c3015cc09aa9",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Infrastructure\");",
+									"});",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Api-Token {{Api-Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"EasyTravel Infrastructure\",\n  \"rules\": [\n    {\n      \"type\": \"HOST\",\n      \"enabled\": true,\n      \"propagationTypes\": [],\n      \"conditions\": [\n        {\n          \"key\": {\n            \"attribute\": \"HOST_TAGS\"\n          },\n          \"comparisonInfo\": {\n            \"type\": \"TAG\",\n            \"operator\": \"TAG_KEY_EQUALS\",\n            \"value\": {\n              \"context\": \"CONTEXTLESS\",\n              \"key\": \"EasyTravel\"\n            },\n            \"negate\": false\n          }\n        }\n      ]\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{EnvUrl}}{{ConfigAPI}}/managementZones",
+							"host": [
+								"{{EnvUrl}}{{ConfigAPI}}"
+							],
+							"path": [
+								"managementZones"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Request Attributes",
+			"item": [
+				{
+					"name": "EasyTravel Amount Request Attribute",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1b855b72-a84c-4523-8ee0-c3015cc09aa9",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Api-Token {{Api-Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"easyTravel Amount\",\n  \"enabled\": true,\n  \"dataType\": \"STRING\",\n  \"dataSources\": [\n    {\n      \"enabled\": true,\n      \"source\": \"QUERY_PARAMETER\",\n      \"valueProcessing\": {\n        \"splitAt\": \"\",\n        \"trim\": false\n      },\n      \"parameterName\": \"amount\",\n      \"capturingAndStorageLocation\": \"CAPTURE_AND_STORE_ON_BOTH\"\n    }\n  ],\n  \"normalization\": \"ORIGINAL\",\n  \"aggregation\": \"FIRST\",\n  \"confidential\": false,\n  \"skipPersonalDataMasking\": true\n}"
+						},
+						"url": {
+							"raw": "{{EnvUrl}}{{ConfigAPI}}/requestAttributes",
+							"host": [
+								"{{EnvUrl}}{{ConfigAPI}}"
+							],
+							"path": [
+								"requestAttributes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EasyTravel Destination Request Attribute",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1b855b72-a84c-4523-8ee0-c3015cc09aa9",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Api-Token {{Api-Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"easyTravel Destination\",\n  \"enabled\": true,\n  \"dataType\": \"STRING\",\n  \"dataSources\": [\n    {\n      \"enabled\": true,\n      \"source\": \"POST_PARAMETER\",\n      \"valueProcessing\": {\n        \"splitAt\": \"\",\n        \"trim\": false\n      },\n      \"parameterName\": \"iceform:destination\"\n    },\n    {\n      \"enabled\": true,\n      \"source\": \"QUERY_PARAMETER\",\n      \"valueProcessing\": {\n        \"splitAt\": \"\",\n        \"trim\": false\n      },\n      \"parameterName\": \"destination\",\n      \"capturingAndStorageLocation\": \"CAPTURE_AND_STORE_ON_BOTH\"\n    }\n  ],\n  \"normalization\": \"ORIGINAL\",\n  \"aggregation\": \"FIRST\",\n  \"confidential\": false,\n  \"skipPersonalDataMasking\": true\n}"
+						},
+						"url": {
+							"raw": "{{EnvUrl}}{{ConfigAPI}}/requestAttributes",
+							"host": [
+								"{{EnvUrl}}{{ConfigAPI}}"
+							],
+							"path": [
+								"requestAttributes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EasyTravel User Request Attribute",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1b855b72-a84c-4523-8ee0-c3015cc09aa9",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Api-Token {{Api-Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"easyTravel User\",\n  \"enabled\": true,\n  \"dataType\": \"STRING\",\n  \"dataSources\": [\n    {\n      \"enabled\": true,\n      \"source\": \"POST_PARAMETER\",\n      \"valueProcessing\": {\n        \"splitAt\": \"\",\n        \"trim\": false\n      },\n      \"parameterName\": \"iceform:username\"\n    },\n    {\n      \"enabled\": true,\n      \"source\": \"POST_PARAMETER\",\n      \"valueProcessing\": {\n        \"splitAt\": \"\",\n        \"trim\": false\n      },\n      \"parameterName\": \"userName\"\n    },\n    {\n      \"enabled\": true,\n      \"source\": \"QUERY_PARAMETER\",\n      \"valueProcessing\": {\n        \"splitAt\": \"\",\n        \"trim\": false\n      },\n      \"parameterName\": \"userName\",\n      \"capturingAndStorageLocation\": \"CAPTURE_AND_STORE_ON_BOTH\"\n    }\n  ],\n  \"normalization\": \"ORIGINAL\",\n  \"aggregation\": \"FIRST\",\n  \"confidential\": false,\n  \"skipPersonalDataMasking\": true\n}"
+						},
+						"url": {
+							"raw": "{{EnvUrl}}{{ConfigAPI}}/requestAttributes",
+							"host": [
+								"{{EnvUrl}}{{ConfigAPI}}"
+							],
+							"path": [
+								"requestAttributes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Synthetic Monitor",
+			"item": [
+				{
+					"name": "Get Public AppDomain from Host",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6618ab09-7c62-4ac0-abab-225f47087e7f",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"var i;",
+									"var lastseenhost = 0;",
+									"for (i=0; i < jsonData.length; i++){",
+									"    //Check if the Public Hostname exists",
+									"    if (jsonData[i].publicHostName){",
+									"        ",
+									"        var j;",
+									"        //Check for the EasyTravel Host",
+									"        for (j=0; j < jsonData[i].tags.length; j++){",
+									"            // If it's an EasyTravel host",
+									"            if(jsonData[i].tags[j].key === \"EasyTravel\"){",
+									"                //For DEV porpuoses in case we have monitored multiple ET hosts, just take the latest instance  ",
+									"                if(jsonData[i].lastSeenTimestamp > lastseenhost){",
+									"                    lastseenhost = jsonData[i].lastSeenTimestamp;",
+									"                    console.log(jsonData[i].publicHostName + \" is the public host for the synthetic tests\");",
+									"                    pm.environment.set(\"AppDomain\", jsonData[i].publicHostName);",
+									"                 }    ",
+									"            }",
+									"        }",
+									"    }",
+									"}",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Api-Token {{Api-Token}}"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{EnvUrl}}{{EnvAPI}}/entity/infrastructure/hosts",
+							"host": [
+								"{{EnvUrl}}{{EnvAPI}}"
+							],
+							"path": [
+								"entity",
+								"infrastructure",
+								"hosts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Synthetic Monitor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2d9592db-81de-41ec-801d-23509a8a6619",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Api-Token {{Api-Token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"EasyTravel Availability\",\r\n    \"frequencyMin\": 15,\r\n    \"enabled\": true,\r\n    \"type\": \"BROWSER\",\r\n    \"script\": {\r\n        \"type\": \"availability\",\r\n        \"version\": \"1.0\",\r\n        \"configuration\": {\r\n            \"device\": {\r\n                \"deviceName\": \"Desktop\",\r\n                \"orientation\": \"landscape\"\r\n            }\r\n        },\r\n        \"events\": [\r\n            {\r\n                \"type\": \"navigate\",\r\n                \"description\": \"Loading of EasyTravel Home\",\r\n                \"url\": \"http://{{AppDomain}}:8079\",\r\n                \"wait\": {\r\n                    \"waitFor\": \"page_complete\"\r\n                }\r\n            }\r\n        ]\r\n    },\r\n    \"locations\": [\r\n\t\t\"GEOLOCATION-0DF9A0E1095A5A62\",\r\n        \"GEOLOCATION-388A5AD15726CB6F\",\r\n        \"GEOLOCATION-E01B833216FC3598\"\r\n    ],\r\n    \"anomalyDetection\": {\r\n        \"outageHandling\": {\r\n            \"globalOutage\": true,\r\n            \"localOutage\": false,\r\n            \"localOutagePolicy\": {\r\n                \"affectedLocations\": 1,\r\n                \"consecutiveRuns\": 3\r\n            }\r\n        },\r\n        \"loadingTimeThresholds\": {\r\n            \"enabled\": false,\r\n            \"thresholds\": []\r\n        }\r\n    },\r\n    \"tags\": [],\r\n    \"managementZones\": [],\r\n    \"automaticallyAssignedApps\": [],\r\n    \"manuallyAssignedApps\": [],\r\n    \"keyPerformanceMetrics\": {\r\n        \"loadActionKpm\": \"VISUALLY_COMPLETE\",\r\n        \"xhrActionKpm\": \"VISUALLY_COMPLETE\"\r\n    },\r\n    \"events\": [\r\n        {\r\n            \r\n            \"name\": \"Loading of EasyTravel Home\",\r\n            \"sequenceNumber\": 1\r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{EnvUrl}}{{EnvAPI}}/synthetic/monitors",
+							"host": [
+								"{{EnvUrl}}{{EnvAPI}}"
+							],
+							"path": [
+								"synthetic",
+								"monitors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Synthetic Monitor Clickpath",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "01109323-c9f7-4540-9595-b0d8f0fba1fb",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Api-Token {{Api-Token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"EasyTravel Clickpath Booking to Cancun\",\n    \"frequencyMin\": 15,\n    \"enabled\": true,\n    \"type\": \"BROWSER\",\n    \"script\": {\n        \"type\": \"clickpath\",\n        \"version\": \"1.0\",\n        \"configuration\": {\n            \"device\": {\n                \"deviceName\": \"Desktop\",\n                \"orientation\": \"landscape\"\n            }\n        },\n        \"events\": [\n            {\n                \"type\": \"navigate\",\n                \"description\": \"Loading of EasyTravel Home\",\n                \"url\": \"http://{{AppDomain}}:8079\",\n                \"wait\": {\n                    \"waitFor\": \"page_complete\"\n                }\n            },\n            {\n                \"type\": \"click\",\n                \"description\": \"click on \\\"Trip Destination\\\"\",\n                \"target\": {\n                    \"locators\": [\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"#iceform\\\\:destination\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"input[type=\\\"text\\\"][name=\\\"iceform:destination\\\"]\"\n                        },\n                        {\n                            \"type\": \"dom\",\n                            \"value\": \"document.forms[1][5]\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \".iceSelInpTxtTxt\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"#iceform\\\\:j_idt131-0-1 div input\"\n                        }\n                    ]\n                },\n                \"button\": 0\n            },\n            {\n                \"type\": \"keystrokes\",\n                \"description\": \"keystrokes on \\\"Trip Destination\\\"\",\n                \"target\": {\n                    \"locators\": [\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"#iceform\\\\:destination\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"input[type=\\\"text\\\"][name=\\\"iceform:destination\\\"]\"\n                        },\n                        {\n                            \"type\": \"dom\",\n                            \"value\": \"document.forms[1][5]\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \".iceSelInpTxtTxt\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"#iceform\\\\:j_idt131-0-1 div input\"\n                        }\n                    ]\n                },\n                \"textValue\": \"cancun\",\n                \"masked\": false,\n                \"simulateBlurEvent\": true,\n                \"wait\": {\n                    \"waitFor\": \"network\"\n                }\n            },\n            {\n                \"type\": \"click\",\n                \"description\": \"Autosuggest for \\\"Cancun\\\"\",\n                \"target\": {\n                    \"locators\": [\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"#iceform\\\\:destination\\\\:j_idt134\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"span:contains(\\\"Cancun\\\"):eq(1)\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \".iceOutTxt:eq(4)\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"#iceform\\\\:destination\\\\:j_idt133-0-0 span\"\n                        }\n                    ]\n                },\n                \"button\": 0,\n                \"wait\": {\n                    \"waitFor\": \"network\"\n                }\n            },\n            {\n                \"type\": \"click\",\n                \"description\": \"click on \\\"Search\\\"\",\n                \"target\": {\n                    \"locators\": [\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"#iceform\\\\:search\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"input[type=\\\"submit\\\"][name=\\\"iceform:search\\\"]\"\n                        },\n                        {\n                            \"type\": \"dom\",\n                            \"value\": \"document.forms[1][9]\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \".iceCmdBtn:eq(3)\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"#iceform\\\\:j_idt128 div:nth-child(3) input:nth-child(2)\"\n                        }\n                    ]\n                },\n                \"button\": 0,\n                \"wait\": {\n                    \"waitFor\": \"network\"\n                }\n            },\n            {\n                \"type\": \"click\",\n                \"description\": \"click on \\\"Book Now\\\"\",\n                \"target\": {\n                    \"locators\": [\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"#iceform\\\\:dataList\\\\:0\\\\:bookLink\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"a:contains(\\\"Book Now\\\"):eq(1)\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"div:contains(\\\"If you wish to stay in a hotel that has friendly staff and an inviting ambience that reminds you of home, then head to the Grand Hotel.\\\"):eq(7)\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \".commonButton:eq(5)\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"#iceform\\\\:dataList\\\\:0\\\\:j_idt222 a:nth-child(6)\"\n                        }\n                    ]\n                },\n                \"button\": 0,\n                \"wait\": {\n                    \"waitFor\": \"page_complete\"\n                }\n            },\n            {\n                \"type\": \"click\",\n                \"description\": \"click on \\\"Username\\\"\",\n                \"target\": {\n                    \"locators\": [\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"#iceform\\\\:username\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"input[type=\\\"text\\\"][name=\\\"iceform:username\\\"]\"\n                        },\n                        {\n                            \"type\": \"dom\",\n                            \"value\": \"document.forms[1][4]\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \".iceInpTxt:eq(1)\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"#iceform\\\\:j_idt149-0-1 input\"\n                        }\n                    ]\n                },\n                \"button\": 0,\n                \"wait\": {\n                    \"waitFor\": \"network\"\n                }\n            },\n            {\n                \"type\": \"keystrokes\",\n                \"description\": \"keystrokes on \\\"Username\\\"\",\n                \"target\": {\n                    \"locators\": [\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"#iceform\\\\:username\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"input[type=\\\"text\\\"][name=\\\"iceform:username\\\"]\"\n                        },\n                        {\n                            \"type\": \"dom\",\n                            \"value\": \"document.forms[1][4]\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \".iceInpTxt:eq(1)\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"#iceform\\\\:j_idt149-0-1 input\"\n                        }\n                    ]\n                },\n                \"textValue\": \"leonabon\",\n                \"masked\": false,\n                \"simulateBlurEvent\": true\n            },\n            {\n                \"type\": \"keystrokes\",\n                \"description\": \"keystrokes on \\\"Password\\\"\",\n                \"target\": {\n                    \"locators\": [\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"#iceform\\\\:password\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"input[type=\\\"password\\\"][name=\\\"iceform:password\\\"]\"\n                        },\n                        {\n                            \"type\": \"dom\",\n                            \"value\": \"document.forms[1][5]\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \".iceInpSecrt:eq(1)\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"#iceform\\\\:j_idt149-1-1 input\"\n                        }\n                    ]\n                },\n                \"textValue\": \"U2FsdGVkX19e1LSh+s/+oI7gVVmZkPQ/KiPbzfaevlg=\",\n                \"masked\": true,\n                \"simulateBlurEvent\": true\n            },\n            {\n                \"type\": \"click\",\n                \"description\": \"click on \\\"Login\\\"\",\n                \"target\": {\n                    \"locators\": [\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"#iceform\\\\:bookLoginSubmit\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"input[type=\\\"submit\\\"][name=\\\"iceform:bookLoginSubmit\\\"]\"\n                        },\n                        {\n                            \"type\": \"dom\",\n                            \"value\": \"document.forms[1][6]\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \".iceCmdBtn:eq(4)\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"#iceform\\\\:j_idt153 input:nth-child(4)\"\n                        }\n                    ]\n                },\n                \"button\": 0,\n                \"wait\": {\n                    \"waitFor\": \"network\"\n                }\n            },\n            {\n                \"type\": \"click\",\n                \"description\": \"click on \\\"Fill Creditcard Details\\\"\",\n                \"target\": {\n                    \"locators\": [\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"#iceform\\\\:bookReviewNext\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"a:contains(\\\"Next\\\")\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"div:contains(\\\"To look for a different journey please press the\\\"):eq(4)\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \".commonButton:eq(5)\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"#iceform div:nth-child(5) a:nth-child(7)\"\n                        }\n                    ]\n                },\n                \"button\": 0,\n                \"wait\": {\n                    \"waitFor\": \"page_complete\"\n                }\n            },\n            {\n                \"type\": \"click\",\n                \"description\": \"click on \\\"Submit\\\"\",\n                \"target\": {\n                    \"locators\": [\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"#iceform\\\\:j_idt118\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"input[type=\\\"image\\\"][src$=\\\"img/privacypolicy_lock.png\\\"][name=\\\"iceform:j_idt118\\\"]\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \".iceCmdBtn:eq(3)\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"#iceform div:nth-child(6) div:nth-child(5) input\"\n                        }\n                    ]\n                },\n                \"button\": 0,\n                \"wait\": {\n                    \"waitFor\": \"network\"\n                }\n            },\n            {\n                \"type\": \"click\",\n                \"description\": \"click on \\\"Next\\\"\",\n                \"target\": {\n                    \"locators\": [\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"#iceform\\\\:bookPaymentNext\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"input[type=\\\"submit\\\"][name=\\\"iceform:bookPaymentNext\\\"]\"\n                        },\n                        {\n                            \"type\": \"dom\",\n                            \"value\": \"document.forms[1][10]\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \".iceCmdBtn:eq(4)\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"#iceform div:nth-child(6) input:nth-child(7)\"\n                        }\n                    ]\n                },\n                \"button\": 0,\n                \"wait\": {\n                    \"waitFor\": \"page_complete\"\n                }\n            },\n            {\n                \"type\": \"click\",\n                \"description\": \"click on \\\"Finish\\\"\",\n                \"target\": {\n                    \"locators\": [\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"#iceform\\\\:bookFinishFinish\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"input[type=\\\"submit\\\"][name=\\\"iceform:bookFinishFinish\\\"]\"\n                        },\n                        {\n                            \"type\": \"dom\",\n                            \"value\": \"document.forms[1][4]\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \".iceCmdBtn:eq(3)\"\n                        },\n                        {\n                            \"type\": \"css\",\n                            \"value\": \"#iceform div:nth-child(6) input:nth-child(6)\"\n                        }\n                    ]\n                },\n                \"button\": 0,\n                \"wait\": {\n                    \"waitFor\": \"page_complete\"\n                }\n            }\n        ]\n    },\n    \"locations\": [\n\t\t\"GEOLOCATION-0DF9A0E1095A5A62\",\n        \"GEOLOCATION-388A5AD15726CB6F\",\n        \"GEOLOCATION-E01B833216FC3598\"\n    ],\n    \"anomalyDetection\": {\n        \"outageHandling\": {\n            \"globalOutage\": true,\n            \"localOutage\": false,\n            \"localOutagePolicy\": {\n                \"affectedLocations\": 1,\n                \"consecutiveRuns\": 3\n            }\n        },\n        \"loadingTimeThresholds\": {\n            \"enabled\": false,\n            \"thresholds\": []\n        }\n    },\n    \"tags\": [],\n    \"managementZones\": [],\n    \"automaticallyAssignedApps\": [],\n    \"manuallyAssignedApps\": [],\n    \"keyPerformanceMetrics\": {\n        \"loadActionKpm\": \"VISUALLY_COMPLETE\",\n        \"xhrActionKpm\": \"VISUALLY_COMPLETE\"\n    },\n    \"events\": [\n        {\n            \"name\": \"Loading of \\\"http://ec2-18-188-149-3.us-east-2.compute.amazonaws.com:8079\\\"\",\n            \"sequenceNumber\": 1\n        },\n        {\n            \"name\": \"click on \\\"Trip Destination\\\"\",\n            \"sequenceNumber\": 2\n        },\n        {\n            \"name\": \"keystrokes on \\\"Trip Destination\\\"\",\n            \"sequenceNumber\": 3\n        },\n        {\n            \"name\": \"click on \\\"Search\\\"\",\n            \"sequenceNumber\": 5\n        },\n        {\n            \"name\": \"keystrokes on \\\"Password\\\"\",\n            \"sequenceNumber\": 9\n        },\n        {\n            \"name\": \"click on \\\"Login\\\"\",\n            \"sequenceNumber\": 10\n        },\n        {\n            \"name\": \"click on \\\"Fill Creditcard Details\\\"\",\n            \"sequenceNumber\": 11\n        },\n        {\n            \"name\": \"click on \\\"Next\\\"\",\n            \"sequenceNumber\": 13\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{EnvUrl}}{{EnvAPI}}/synthetic/monitors",
+							"host": [
+								"{{EnvUrl}}{{EnvAPI}}"
+							],
+							"path": [
+								"synthetic",
+								"monitors"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dashboards",
+			"item": [
+				{
+					"name": "Create Dashboard",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6618ab09-7c62-4ac0-abab-225f47087e7f",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Api-Token {{Api-Token}}"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"metadata\": {\r\n        \"configurationVersions\": [\r\n            2\r\n        ]\r\n    },\r\n    \"dashboardMetadata\": {\r\n        \"name\": \"🔬Fullstack Self-Service Diagnostics 📉 \",\r\n        \"shared\": true,\r\n        \"sharingDetails\": {\r\n            \"linkShared\": true,\r\n            \"published\": true\r\n        },\r\n        \"dashboardFilter\": {\r\n            \"timeframe\": \"l_2_HOURS\",\r\n            \"managementZone\": null\r\n        }\r\n    },\r\n    \"tiles\": [\r\n        {\r\n            \"name\": \"Host health\",\r\n            \"tileType\": \"HOSTS\",\r\n            \"configured\": true,\r\n            \"bounds\": {\r\n                \"top\": 38,\r\n                \"left\": 304,\r\n                \"width\": 152,\r\n                \"height\": 152\r\n            },\r\n            \"tileFilter\": {\r\n                \"managementZone\": null\r\n            },\r\n            \"filterConfig\": null,\r\n            \"chartVisible\": true\r\n        },\r\n        {\r\n            \"name\": \"Network status\",\r\n            \"tileType\": \"NETWORK_MEDIUM\",\r\n            \"configured\": true,\r\n            \"bounds\": {\r\n                \"top\": 38,\r\n                \"left\": 950,\r\n                \"width\": 304,\r\n                \"height\": 152\r\n            },\r\n            \"tileFilter\": {\r\n                \"managementZone\": null\r\n            }\r\n        },\r\n        {\r\n            \"name\": \"World map\",\r\n            \"tileType\": \"APPLICATION_WORLDMAP\",\r\n            \"configured\": true,\r\n            \"bounds\": {\r\n                \"top\": 266,\r\n                \"left\": 304,\r\n                \"width\": 304,\r\n                \"height\": 304\r\n            },\r\n            \"tileFilter\": {\r\n                \"managementZone\": null\r\n            },\r\n            \"assignedEntities\": [\r\n                \"{{AppID}}\"\r\n            ],\r\n            \"metric\": \"APDEX\"\r\n        },\r\n        {\r\n            \"name\": \"Bounce rate\",\r\n            \"tileType\": \"BOUNCE_RATE\",\r\n            \"configured\": true,\r\n            \"bounds\": {\r\n                \"top\": 570,\r\n                \"left\": 0,\r\n                \"width\": 304,\r\n                \"height\": 304\r\n            },\r\n            \"tileFilter\": {\r\n                \"managementZone\": null\r\n            },\r\n            \"assignedEntities\": [\r\n                \"{{AppID}}\"\r\n            ]\r\n        },\r\n        {\r\n            \"name\": \"Live user activity\",\r\n            \"tileType\": \"UEM_ACTIVE_SESSIONS\",\r\n            \"configured\": true,\r\n            \"bounds\": {\r\n                \"top\": 266,\r\n                \"left\": 0,\r\n                \"width\": 304,\r\n                \"height\": 304\r\n            },\r\n            \"tileFilter\": {\r\n                \"managementZone\": null\r\n            }\r\n        },\r\n        {\r\n            \"name\": \"Synthetic monitor health\",\r\n            \"tileType\": \"SYNTHETIC_TESTS\",\r\n            \"configured\": true,\r\n            \"bounds\": {\r\n                \"top\": 38,\r\n                \"left\": 608,\r\n                \"width\": 152,\r\n                \"height\": 152\r\n            },\r\n            \"tileFilter\": {\r\n                \"managementZone\": null\r\n            },\r\n            \"filterConfig\": null,\r\n            \"chartVisible\": true\r\n        },\r\n        {\r\n            \"name\": \"Web application\",\r\n            \"tileType\": \"APPLICATION\",\r\n            \"configured\": true,\r\n            \"bounds\": {\r\n                \"top\": 570,\r\n                \"left\": 304,\r\n                \"width\": 304,\r\n                \"height\": 304\r\n            },\r\n            \"tileFilter\": {\r\n                \"managementZone\": null\r\n            },\r\n            \"assignedEntities\": [\r\n                \"{{AppID}}\"\r\n            ]\r\n        },\r\n        {\r\n            \"name\": \"Database health\",\r\n            \"tileType\": \"DATABASES_OVERVIEW\",\r\n            \"configured\": true,\r\n            \"bounds\": {\r\n                \"top\": 38,\r\n                \"left\": 456,\r\n                \"width\": 152,\r\n                \"height\": 152\r\n            },\r\n            \"tileFilter\": {\r\n                \"managementZone\": null\r\n            },\r\n            \"filterConfig\": null,\r\n            \"chartVisible\": true\r\n        },\r\n        {\r\n            \"name\": \"Problems\",\r\n            \"tileType\": \"OPEN_PROBLEMS\",\r\n            \"configured\": true,\r\n            \"bounds\": {\r\n                \"top\": 38,\r\n                \"left\": 0,\r\n                \"width\": 152,\r\n                \"height\": 152\r\n            },\r\n            \"tileFilter\": {\r\n                \"managementZone\": null\r\n            }\r\n        },\r\n        {\r\n            \"name\": \"Service health\",\r\n            \"tileType\": \"SERVICES\",\r\n            \"configured\": true,\r\n            \"bounds\": {\r\n                \"top\": 38,\r\n                \"left\": 760,\r\n                \"width\": 152,\r\n                \"height\": 152\r\n            },\r\n            \"tileFilter\": {\r\n                \"managementZone\": null\r\n            },\r\n            \"filterConfig\": null,\r\n            \"chartVisible\": true\r\n        },\r\n        {\r\n            \"name\": \"Application health\",\r\n            \"tileType\": \"APPLICATIONS\",\r\n            \"configured\": true,\r\n            \"bounds\": {\r\n                \"top\": 38,\r\n                \"left\": 152,\r\n                \"width\": 152,\r\n                \"height\": 152\r\n            },\r\n            \"tileFilter\": {\r\n                \"managementZone\": null\r\n            },\r\n            \"filterConfig\": null,\r\n            \"chartVisible\": true\r\n        },\r\n        {\r\n            \"name\": \"\",\r\n            \"tileType\": \"CUSTOM_CHARTING\",\r\n            \"configured\": true,\r\n            \"bounds\": {\r\n                \"top\": 38,\r\n                \"left\": 1292,\r\n                \"width\": 266,\r\n                \"height\": 418\r\n            },\r\n            \"tileFilter\": {\r\n                \"managementZone\": null\r\n            },\r\n            \"filterConfig\": {\r\n                \"type\": \"MIXED\",\r\n                \"customName\": \"Slowest Services\",\r\n                \"defaultName\": \"Custom chart\",\r\n                \"chartConfig\": {\r\n                    \"type\": \"TOP_LIST\",\r\n                    \"series\": [\r\n                        {\r\n                            \"metric\": \"CTS_SERVICE_RESPONSE_TIME\",\r\n                            \"aggregation\": \"SLOWEST10PERCENT\",\r\n                            \"percentile\": null,\r\n                            \"type\": \"LINE\",\r\n                            \"entityType\": \"SERVICE\",\r\n                            \"dimensions\": [],\r\n                            \"sortAscending\": false,\r\n                            \"sortColumn\": true\r\n                        }\r\n                    ],\r\n                    \"resultMetadata\": {}\r\n                },\r\n                \"filtersPerEntityType\": {}\r\n            }\r\n        },\r\n        {\r\n            \"name\": \"\",\r\n            \"tileType\": \"CUSTOM_CHARTING\",\r\n            \"configured\": true,\r\n            \"bounds\": {\r\n                \"top\": 456,\r\n                \"left\": 1292,\r\n                \"width\": 266,\r\n                \"height\": 418\r\n            },\r\n            \"tileFilter\": {\r\n                \"managementZone\": null\r\n            },\r\n            \"filterConfig\": {\r\n                \"type\": \"MIXED\",\r\n                \"customName\": \"Services Failure rate\",\r\n                \"defaultName\": \"Custom chart\",\r\n                \"chartConfig\": {\r\n                    \"type\": \"TOP_LIST\",\r\n                    \"series\": [\r\n                        {\r\n                            \"metric\": \"CTS_FAILURE_RATE\",\r\n                            \"aggregation\": \"AVG\",\r\n                            \"percentile\": null,\r\n                            \"type\": \"LINE\",\r\n                            \"entityType\": \"SERVICE\",\r\n                            \"dimensions\": [],\r\n                            \"sortAscending\": false,\r\n                            \"sortColumn\": true\r\n                        }\r\n                    ],\r\n                    \"resultMetadata\": {}\r\n                },\r\n                \"filtersPerEntityType\": {}\r\n            }\r\n        },\r\n        {\r\n            \"name\": \"Markdown\",\r\n            \"tileType\": \"MARKDOWN\",\r\n            \"configured\": true,\r\n            \"bounds\": {\r\n                \"top\": 0,\r\n                \"left\": 0,\r\n                \"width\": 152,\r\n                \"height\": 38\r\n            },\r\n            \"tileFilter\": {\r\n                \"managementZone\": null\r\n            },\r\n            \"markdown\": \"Quick Access:\"\r\n        },\r\n        {\r\n            \"name\": \"Markdown\",\r\n            \"tileType\": \"MARKDOWN\",\r\n            \"configured\": true,\r\n            \"bounds\": {\r\n                \"top\": 0,\r\n                \"left\": 1140,\r\n                \"width\": 152,\r\n                \"height\": 38\r\n            },\r\n            \"tileFilter\": {\r\n                \"managementZone\": null\r\n            },\r\n            \"markdown\": \"[🛠 Settings](#settings;gf=all)\"\r\n        },\r\n        {\r\n            \"name\": \"Markdown\",\r\n            \"tileType\": \"MARKDOWN\",\r\n            \"configured\": true,\r\n            \"bounds\": {\r\n                \"top\": 228,\r\n                \"left\": 0,\r\n                \"width\": 304,\r\n                \"height\": 38\r\n            },\r\n            \"tileFilter\": {\r\n                \"managementZone\": null\r\n            },\r\n            \"markdown\": \"**Real User Experience - EasyTravel**\"\r\n        },\r\n        {\r\n            \"name\": \"Markdown\",\r\n            \"tileType\": \"MARKDOWN\",\r\n            \"configured\": true,\r\n            \"bounds\": {\r\n                \"top\": 0,\r\n                \"left\": 988,\r\n                \"width\": 152,\r\n                \"height\": 38\r\n            },\r\n            \"tileFilter\": {\r\n                \"managementZone\": null\r\n            },\r\n            \"markdown\": \"[🕸 smartscape](#smartscape)\"\r\n        },\r\n        {\r\n            \"name\": \"Markdown\",\r\n            \"tileType\": \"MARKDOWN\",\r\n            \"configured\": true,\r\n            \"bounds\": {\r\n                \"top\": 0,\r\n                \"left\": 836,\r\n                \"width\": 152,\r\n                \"height\": 38\r\n            },\r\n            \"tileFilter\": {\r\n                \"managementZone\": null\r\n            },\r\n            \"markdown\": \"[📄 LogAnalytics](#loganalytics;gf=all;gtf=l_2_HOURS)\"\r\n        },\r\n        {\r\n            \"name\": \"Markdown\",\r\n            \"tileType\": \"MARKDOWN\",\r\n            \"configured\": true,\r\n            \"bounds\": {\r\n                \"top\": 0,\r\n                \"left\": 684,\r\n                \"width\": 152,\r\n                \"height\": 38\r\n            },\r\n            \"tileFilter\": {\r\n                \"managementZone\": null\r\n            },\r\n            \"markdown\": \"[🔬 Diagnostic Tools](#diagnostictools;gtf=l_2_HOURS;gf=all)\"\r\n        },\r\n        {\r\n            \"name\": \"\",\r\n            \"tileType\": \"CUSTOM_CHARTING\",\r\n            \"configured\": true,\r\n            \"bounds\": {\r\n                \"top\": 418,\r\n                \"left\": 646,\r\n                \"width\": 608,\r\n                \"height\": 228\r\n            },\r\n            \"tileFilter\": {\r\n                \"managementZone\": null\r\n            },\r\n            \"filterConfig\": {\r\n                \"type\": \"MIXED\",\r\n                \"customName\": \"ResponseTime\",\r\n                \"defaultName\": \"Custom chart\",\r\n                \"chartConfig\": {\r\n                    \"type\": \"TIMESERIES\",\r\n                    \"series\": [\r\n                        {\r\n                            \"metric\": \"CTS_SERVICE_RESPONSE_TIME\",\r\n                            \"aggregation\": \"MEDIAN\",\r\n                            \"percentile\": null,\r\n                            \"type\": \"LINE\",\r\n                            \"entityType\": \"SERVICE\",\r\n                            \"dimensions\": [],\r\n                            \"sortAscending\": false,\r\n                            \"sortColumn\": true\r\n                        }\r\n                    ],\r\n                    \"resultMetadata\": {}\r\n                },\r\n                \"filtersPerEntityType\": {}\r\n            }\r\n        },\r\n        {\r\n            \"name\": \"\",\r\n            \"tileType\": \"CUSTOM_CHARTING\",\r\n            \"configured\": true,\r\n            \"bounds\": {\r\n                \"top\": 646,\r\n                \"left\": 646,\r\n                \"width\": 608,\r\n                \"height\": 228\r\n            },\r\n            \"tileFilter\": {\r\n                \"managementZone\": null\r\n            },\r\n            \"filterConfig\": {\r\n                \"type\": \"MIXED\",\r\n                \"customName\": \"HTTP errors\",\r\n                \"defaultName\": \"Custom chart\",\r\n                \"chartConfig\": {\r\n                    \"type\": \"TIMESERIES\",\r\n                    \"series\": [\r\n                        {\r\n                            \"metric\": \"CTS_SERVICE_HTTP_4XX_ERRORS\",\r\n                            \"aggregation\": \"SUM\",\r\n                            \"percentile\": null,\r\n                            \"type\": \"BAR\",\r\n                            \"entityType\": \"SERVICE\",\r\n                            \"dimensions\": [],\r\n                            \"sortAscending\": false,\r\n                            \"sortColumn\": false\r\n                        },\r\n                        {\r\n                            \"metric\": \"CTS_SERVICE_HTTP_5XX_ERRORS\",\r\n                            \"aggregation\": \"SUM\",\r\n                            \"percentile\": null,\r\n                            \"type\": \"BAR\",\r\n                            \"entityType\": \"SERVICE\",\r\n                            \"dimensions\": [],\r\n                            \"sortAscending\": false,\r\n                            \"sortColumn\": true\r\n                        }\r\n                    ],\r\n                    \"resultMetadata\": {}\r\n                },\r\n                \"filtersPerEntityType\": {}\r\n            }\r\n        },\r\n        {\r\n            \"name\": \"Custom chart\",\r\n            \"tileType\": \"CUSTOM_CHARTING\",\r\n            \"configured\": true,\r\n            \"bounds\": {\r\n                \"top\": 190,\r\n                \"left\": 646,\r\n                \"width\": 608,\r\n                \"height\": 228\r\n            },\r\n            \"tileFilter\": {\r\n                \"managementZone\": null\r\n            },\r\n            \"filterConfig\": {\r\n                \"type\": \"MIXED\",\r\n                \"customName\": \"Requests\",\r\n                \"defaultName\": \"Custom chart\",\r\n                \"chartConfig\": {\r\n                    \"type\": \"TIMESERIES\",\r\n                    \"series\": [\r\n                        {\r\n                            \"metric\": \"CTS_SERVICE_LOAD\",\r\n                            \"aggregation\": \"COUNT\",\r\n                            \"percentile\": null,\r\n                            \"type\": \"LINE\",\r\n                            \"entityType\": \"SERVICE\",\r\n                            \"dimensions\": [],\r\n                            \"sortAscending\": false,\r\n                            \"sortColumn\": true\r\n                        }\r\n                    ],\r\n                    \"resultMetadata\": {}\r\n                },\r\n                \"filtersPerEntityType\": {}\r\n            }\r\n        },\r\n        {\r\n            \"name\": \"Markdown\",\r\n            \"tileType\": \"MARKDOWN\",\r\n            \"configured\": true,\r\n            \"bounds\": {\r\n                \"top\": 0,\r\n                \"left\": 1368,\r\n                \"width\": 152,\r\n                \"height\": 38\r\n            },\r\n            \"tileFilter\": {\r\n                \"managementZone\": null\r\n            },\r\n            \"markdown\": \"**Services KPI**\"\r\n        },\r\n        {\r\n            \"name\": \"Markdown\",\r\n            \"tileType\": \"MARKDOWN\",\r\n            \"configured\": true,\r\n            \"bounds\": {\r\n                \"top\": 0,\r\n                \"left\": 304,\r\n                \"width\": 152,\r\n                \"height\": 38\r\n            },\r\n            \"tileFilter\": {\r\n                \"managementZone\": null\r\n            },\r\n            \"markdown\": \"🛠 [EasyTravel Conf](http://{{AppDomain}}:8094) \"\r\n        },\r\n        {\r\n            \"name\": \"Markdown\",\r\n            \"tileType\": \"MARKDOWN\",\r\n            \"configured\": true,\r\n            \"bounds\": {\r\n                \"top\": 0,\r\n                \"left\": 152,\r\n                \"width\": 152,\r\n                \"height\": 38\r\n            },\r\n            \"tileFilter\": {\r\n                \"managementZone\": null\r\n            },\r\n            \"markdown\": \"🌎 [EasyTravel Web](http://{{AppDomain}}:8079) \"\r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{EnvUrl}}{{ConfigAPI}}/dashboards",
+							"host": [
+								"{{EnvUrl}}{{ConfigAPI}}"
+							],
+							"path": [
+								"dashboards"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "7dfa42fa-1072-440e-9233-2a59cc376a72",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "abdff900-8a8c-4926-a595-98d4c47b0c35",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "38cf63a2-53c2-4894-b3e7-bc365a0cd841",
+			"key": "ConfigAPI",
+			"value": "/api/config/v1",
+			"type": "string"
+		},
+		{
+			"id": "c230578a-9d07-495b-b456-d9f2e3aad47d",
+			"key": "EnvAPI",
+			"value": "/api/v1",
+			"type": "string"
+		}
+	]
+}
