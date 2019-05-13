@@ -5,7 +5,7 @@
     "Parameters":{
         "TenantID":{
 			"Description": "Your Tenant URL in the form https://<TENANTID>.sprint.dynatracelabs.com",
-			"AllowedPattern": "https:\/\/.*\\bsprint.\\bdynatracelabs.\\b\\bcom\\b",
+			"AllowedPattern": "https:\\/\\/.*\\.((sprint|dev)\\.dynatracelabs|live\\.dynatrace)\\.com",
 			"ConstraintDescription": "must be in the format https://<TENANTID>.sprint.dynatracelabs.com",
             "Type":"String"
         },
